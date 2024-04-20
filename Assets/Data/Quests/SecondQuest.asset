@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c44f95d786a6b5e4ca4f9304fe26de49, type: 3}
+  m_Name: SecondQuest
+  m_EditorClassIdentifier: 
+  stage: 1
+  <id>k__BackingField: 2
+  <name>k__BackingField: Second quest
+  <requirements>k__BackingField: 3 people
+  <describtion>k__BackingField: WTF???
+  <peopleCount>k__BackingField: 3
+  <timeNeed>k__BackingField: 120
+  timeInWork: 14.205137
