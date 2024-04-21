@@ -1,4 +1,4 @@
-
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -11,6 +11,7 @@ public class CardMoving : MonoBehaviour, IDragHandler, IPointerDownHandler, IEnd
     public PointerEventData.InputButton dragMousButton;
     [HideInInspector]
     public Transform parentAfterDrag;
+    public event Action<Person> OnDeletePerson;
 
 
     public void OnDrag(PointerEventData eventData)
@@ -23,6 +24,7 @@ public class CardMoving : MonoBehaviour, IDragHandler, IPointerDownHandler, IEnd
     {
         if (eventData.button == dragMousButton)
         {
+            try { OnDeletePerson.Invoke(gameObject.GetComponentInChildren<PersonCardUI>().person); } catch { }
             parentAfterDrag = transform.parent;
             transform.SetParent(transform.root);
             mouseDragStartPos = Input.mousePosition - transform.localPosition;

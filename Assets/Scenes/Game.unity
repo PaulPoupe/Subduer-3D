@@ -332,7 +332,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -1461,7 +1461,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: edf09e8f3075dd74798fdcfde4592174, type: 2}
   - {fileID: 11400000, guid: 6f0ef5545c362c847bec4cfb8754620a, type: 2}
   prefab: {fileID: 9149799486743462500, guid: 6eeb29a3968655d49891dc588e99384d, type: 3}
-  logbook: {fileID: 733194178}
+  logbookQuestPanel: {fileID: 733194178}
 --- !u!4 &1886602468
 Transform:
   m_ObjectHideFlags: 0

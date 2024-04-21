@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PersonCardUI : MonoBehaviour
 {
-    public Person person = new Person();
+    public Person person;
     [SerializeField]
     private Image image;
     [SerializeField]
@@ -23,13 +23,9 @@ public class PersonCardUI : MonoBehaviour
     [SerializeField]
     private Slider health;
 
-    private void Awake()
+    public void Inittialize(Person person)
     {
-        Inittialize();
-    }
-
-    private void Inittialize()
-    {
+        this.person = person;
         name.text = person.name;
         surename.text = person.surename;
         age.text = person.age.ToString();

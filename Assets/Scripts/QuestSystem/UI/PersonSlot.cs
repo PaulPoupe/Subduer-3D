@@ -6,7 +6,7 @@ public class PersonSlot : MonoBehaviour, IDropHandler
 {
     public int index;
     public Person pastPerson;
-    public event Action<Person, int> OnPastPerson;
+    public event Action<GameObject, int> OnPastPerson;
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -15,8 +15,11 @@ public class PersonSlot : MonoBehaviour, IDropHandler
             GameObject dropped = eventData.pointerDrag;
             CardMoving cardMoving = dropped.GetComponent<CardMoving>();
             cardMoving.parentAfterDrag = transform;
-            try { OnPastPerson.Invoke(dropped.GetComponent<PersonCardUI>().person, index); }
-            catch { }
+            if (transform.parent.name == "Persons panel")
+            {
+                try { OnPastPerson.Invoke(dropped, index); }
+                catch { }
+            }
         }
     }
 

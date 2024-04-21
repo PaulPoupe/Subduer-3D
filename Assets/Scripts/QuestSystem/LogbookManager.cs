@@ -4,14 +4,32 @@ using UnityEngine;
 
 public class LogbookManager : MonoBehaviour
 {
-    private List<GameObject> questPanels = new List<GameObject> { };
-    private List<Quest> quests = new List<Quest> { };
+    private List<GameObject> questPanels = new List<GameObject>();
+    private List<Quest> quests = new List<Quest>();
     public List<Quest> questList = new List<Quest>();
+    public List<Person> staffList = new List<Person>();
+    public List<Person> busyStaffList = new List<Person>();
 
     [SerializeField]
     private GameObject prefab;
     [SerializeField]
-    private Transform logbook;
+    private Transform logbookQuestPanel;
+
+    private const int staffCount = 10;
+
+
+    private void Awake()
+    {
+        CreateNewStaff();
+    }
+
+    private void CreateNewStaff()
+    {
+        for (int i = 0; i < staffCount; i++)
+        {
+            staffList.Add(new Person());
+        }
+    }
 
     private void AddQuest(Quest quest)
     {
@@ -19,7 +37,7 @@ public class LogbookManager : MonoBehaviour
         {
             ResetQuest(quest);
             quests.Add(quest);
-            questPanels.Add(Instantiate(prefab, logbook));
+            questPanels.Add(Instantiate(prefab, logbookQuestPanel));
             quest.Inittialize();
             questPanels[questPanels.Count - 1].GetComponent<LogbookUI>().Inittialize(quest);
         }

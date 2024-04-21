@@ -4,6 +4,9 @@ using System.Linq;
 
 public class Person
 {
+    public int position;
+
+
     private Image image;
 
     public string name;
