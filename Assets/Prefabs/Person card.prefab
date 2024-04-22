@@ -3586,7 +3586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f85a03090e81e42ba9916ce96121d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardImage: {fileID: 7912784515002118889}
+  card: {fileID: 7912784515002118889}
   dragMousButton: 0
   parentAfterDrag: {fileID: 0}
 --- !u!1 &9158771330829570296

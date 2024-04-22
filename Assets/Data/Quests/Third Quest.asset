@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c44f95d786a6b5e4ca4f9304fe26de49, type: 3}
-  m_Name: SecondQuest
+  m_Name: Third Quest
   m_EditorClassIdentifier: 
-  <id>k__BackingField: 1
-  <name>k__BackingField: Second quest
-  <requirements>k__BackingField: 3 people
-  <describtion>k__BackingField: WTF???
-  <peopleCount>k__BackingField: 3
-  <timeNeed>k__BackingField: 120
+  <id>k__BackingField: 2
+  <name>k__BackingField: 3
+  <requirements>k__BackingField: ff
+  <describtion>k__BackingField: gggg
+  <peopleCount>k__BackingField: 2
+  <timeNeed>k__BackingField: 80
   timeInWork: 0

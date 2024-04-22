@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 public class PersonSlot : MonoBehaviour, IDropHandler
 {
-    public int index;
+    public int? index;
     public Person pastPerson;
     public event Action<GameObject, int> OnPastPerson;
 
@@ -15,10 +15,9 @@ public class PersonSlot : MonoBehaviour, IDropHandler
             GameObject dropped = eventData.pointerDrag;
             CardMoving cardMoving = dropped.GetComponent<CardMoving>();
             cardMoving.parentAfterDrag = transform;
-            if (transform.parent.name == "Persons panel")
+            if (index != null)
             {
-                try { OnPastPerson.Invoke(dropped, index); }
-                catch { }
+                OnPastPerson.Invoke(dropped, (int)index);
             }
         }
     }

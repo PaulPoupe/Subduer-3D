@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44f95d786a6b5e4ca4f9304fe26de49, type: 3}
   m_Name: FirstQuest
   m_EditorClassIdentifier: 
-  stage: 2
-  <id>k__BackingField: 1
+  <id>k__BackingField: 0
   <name>k__BackingField: "\u041F\u043E\u0447\u0438\u043D\u0438\u0442\u044C \u0433\u0435\u043D\u0438\u0440\u0430\u0442\u043E\u0440"
   <requirements>k__BackingField: 2 people
   <describtion>k__BackingField: "\u0413\u0435\u043D\u0438\u0440\u0430\u0442\u043E\u0440
@@ -23,4 +22,4 @@ MonoBehaviour:
     \u0447\u0442\u043E \u0431 \u0435\u0433\u043E \u043F\u043E\u0447\u0438\u043D\u0438\u0442\u044C"
   <peopleCount>k__BackingField: 2
   <timeNeed>k__BackingField: 60
-  timeInWork: 60.000534
+  timeInWork: 60.00213

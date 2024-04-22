@@ -13,11 +13,11 @@ public class LogbookUI : MonoBehaviour
     [SerializeField]
     GameObject prefabQuestWindow;
     [SerializeField]
-    GameObject timerGui;
+    GameObject timer;
     [SerializeField]
-    GameObject questBatton;
+    GameObject batton;
     [SerializeField]
-    Image markerGui;
+    Image marker;
     [SerializeField]
     Sprite finishedFlag;
 
@@ -28,9 +28,14 @@ public class LogbookUI : MonoBehaviour
         tmpQuestDescription.text = quest.requirements;
         this.quest = quest;
 
-        quest.OnStarted += TimerGuiStart;
-        quest.OnCompleted += TimerGuiFinish;
-        quest.OnUpdate += TimerGuiUpdate;
+        Subscribe(quest);
+
+        void Subscribe(Quest quest)
+        {
+            quest.OnStarted += TimerGuiStart;
+            quest.OnCompleted += TimerGuiFinish;
+            quest.OnUpdate += TimerGuiUpdate;
+        }
     }
 
     public void OpenQuestWindow()
@@ -42,21 +47,21 @@ public class LogbookUI : MonoBehaviour
 
     private void TimerGuiStart()
     {
-        timerGui.SetActive(true);
-        timerGui.GetComponent<Slider>().maxValue = quest.timeNeed;
-        questBatton.SetActive(false);
+        timer.SetActive(true);
+        timer.GetComponent<Slider>().maxValue = quest.timeNeed;
+        batton.SetActive(false);
     }
 
     private void TimerGuiUpdate()
     {
-        timerGui.GetComponent<Slider>().value = quest.timeInWork;
+        timer.GetComponent<Slider>().value = quest.timeInWork;
     }
 
     private void TimerGuiFinish()
     {
-        timerGui.SetActive(false);
-        questBatton.SetActive(false);
-        markerGui.gameObject.SetActive(true);
-        markerGui.sprite = finishedFlag;
+        timer.SetActive(false);
+        batton.SetActive(false);
+        marker.gameObject.SetActive(true);
+        marker.sprite = finishedFlag;
     }
 }

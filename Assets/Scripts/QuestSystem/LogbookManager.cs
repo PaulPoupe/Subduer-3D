@@ -1,5 +1,9 @@
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LogbookManager : MonoBehaviour
@@ -40,6 +44,7 @@ public class LogbookManager : MonoBehaviour
             questPanels.Add(Instantiate(prefab, logbookQuestPanel));
             quest.Inittialize();
             questPanels[questPanels.Count - 1].GetComponent<LogbookUI>().Inittialize(quest);
+            questList.Remove(quest);
         }
     }
     public void StartQuest(Quest quest)
@@ -56,7 +61,14 @@ public class LogbookManager : MonoBehaviour
 
     public void InstantiateRandomQuest()
     {
-        System.Random random = new System.Random();
-        AddQuest(questList[random.Next(questList.Count)]);
+        try
+        {
+            System.Random random = new System.Random();
+            AddQuest(questList[random.Next(questList.Count)]);
+        }
+        catch
+        {
+            Debug.LogAssertion("Нет новых квестов");
+        }
     }
 }

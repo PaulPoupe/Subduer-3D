@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6575093456190681230}
   - component: {fileID: 1589801655386537727}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1078,7 +1078,7 @@ MonoBehaviour:
   tmpQuestName: {fileID: 2583820556478696195}
   tmpQuestDescription: {fileID: 5796293376665632834}
   prefabQuestWindow: {fileID: 8600110489095700560, guid: 7124b6e0049b64b47bd17d26154dc8cd, type: 3}
-  timerGui: {fileID: 30809836914560757}
-  questBatton: {fileID: 1107630506885957455}
-  markerGui: {fileID: 5373011628508875120}
+  timer: {fileID: 30809836914560757}
+  batton: {fileID: 1107630506885957455}
+  marker: {fileID: 5373011628508875120}
   finishedFlag: {fileID: 21300000, guid: d9439aae440028845ae8919c8a35e31b, type: 3}

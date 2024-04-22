@@ -1,11 +1,10 @@
+using System;
 using UnityEngine.UI;
-using System.Collections.Generic;
-using System.Linq;
+
 
 public class Person
 {
-    public int position;
-
+    public int? position = null;
 
     private Image image;
 
@@ -13,8 +12,6 @@ public class Person
     public string surename;
     public string gender;
     public int age;
-
-
 
     public float fatigue { get; private set; } = 100.0f;
     public float health { get; private set; } = 100.0f;
@@ -26,18 +23,17 @@ public class Person
 
     public Person()
     {
-        System.Random random = new System.Random();
+        Random random = new Random();
+
         job = new Job();
         age = random.Next(18, 48);
         comunicationSkill = random.Next(0, 5);
         mentalStability = random.Next(0, 5);
         job.profession = (Job.Profession)random.Next(0, 6);
-        job.skill = (float)random.Next(0, 4);
+        job.skill = random.Next(0, 4);
         name = Names.mensNames[random.Next(Names.mensNames.Count)];
         surename = Names.sureNames[random.Next(Names.sureNames.Count)];
     }
-
-
 }
 
 
