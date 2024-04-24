@@ -20,6 +20,7 @@ public class LogbookUI : MonoBehaviour
     Image marker;
     [SerializeField]
     Sprite finishedFlag;
+    GameObject window = null;
 
 
     public void Inittialize(Quest quest)
@@ -41,8 +42,11 @@ public class LogbookUI : MonoBehaviour
     public void OpenQuestWindow()
     {
         Transform canvas = transform.root;
-        GameObject window = Instantiate(prefabQuestWindow, canvas);
-        window.GetComponent<QuestWindowUI>().Inittialize(quest);
+        if (window == null)
+        {
+            window = Instantiate(prefabQuestWindow, canvas);
+            window.GetComponent<QuestWindowUI>().Inittialize(quest);
+        }
     }
 
     private void TimerGuiStart()

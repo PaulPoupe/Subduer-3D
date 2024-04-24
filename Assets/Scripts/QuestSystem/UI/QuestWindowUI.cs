@@ -54,7 +54,6 @@ public class QuestWindowUI : MonoBehaviour
             personSlot.OnPastPerson += PastePerson;
             if (indexing) { personSlot.index = i; }
             else { personSlot.index = null; }
-
         }
         return slots;
     }
@@ -112,8 +111,27 @@ public class QuestWindowUI : MonoBehaviour
 
     private void CloseWindow()
     {
-        //Перед закрытием нужно проверять есть ли назначенные персонажи!!!
+        ClearWorkers(quest.stage);
         Destroy(gameObject);
+    }
+
+    private void ClearWorkers(Stage stage)
+    {
+        if (stage == Stage.notStarted)
+        {
+            for (int i = 0; i < quest.workers.Length; i++)
+            {
+                try
+                {
+                    Person worker = quest.workers[i];
+                    worker.position = null;
+                    worker = null;
+                    Debug.Log("Рабочий № " + i + " очищен");
+                }
+                catch { }
+            }
+
+        }
     }
 
     public void EceptQuest()
