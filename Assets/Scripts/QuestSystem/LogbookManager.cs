@@ -16,17 +16,18 @@ public class LogbookManager : MonoBehaviour
     public static List<Person> busyStaff = new List<Person>();
 
     public static event Action<Quest> OnAddQuest;
+    public static Action<Quest> OnStartQuest;
 
-
-
-    private void Awake() => CreateNewStaff();
+    private void Awake()
+    {
+        OnStartQuest += StartQuest;
+        CreateNewStaff();
+    }
 
     private void CreateNewStaff()
     {
         for (int i = 0; i < staffCount; i++)
-        {
             freeStaff.Add(new Person());
-        }
     }
 
     private void AddQuest(Quest quest)
@@ -57,7 +58,12 @@ public class LogbookManager : MonoBehaviour
         }
         catch
         {
-            Debug.LogAssertion("Нет новых квестов");
+            Debug.LogWarning("Нет новых квестов");
         }
+    }
+
+    private void StartQuest(Quest quest)
+    {
+        StartCoroutine(quest.StartQuest());
     }
 }

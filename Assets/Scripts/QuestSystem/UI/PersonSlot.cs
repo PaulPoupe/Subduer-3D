@@ -15,10 +15,10 @@ public class PersonSlot : MonoBehaviour, IDropHandler
             GameObject dropped = eventData.pointerDrag;
             CardMoving cardMoving = dropped.GetComponent<CardMoving>();
             cardMoving.parentAfterDrag = transform;
+
             if (index != null)
-            {
                 OnPastPerson.Invoke(dropped, (int)index);
-            }
+
         }
     }
 

@@ -22,6 +22,19 @@ public class LogbookQuestUI : MonoBehaviour
     Sprite finishedFlag;
     GameObject window = null;
 
+    void Subscribe(Quest quest)
+    {
+        quest.OnStarted += TimerGuiStart;
+        quest.OnCompleted += TimerGuiFinish;
+        quest.OnUpdate += TimerGuiUpdate;
+    }
+
+    void UnSubscribe(Quest quest)
+    {
+        quest.OnStarted -= TimerGuiStart;
+        quest.OnCompleted -= TimerGuiFinish;
+        quest.OnUpdate -= TimerGuiUpdate;
+    }
 
     public void Inittialize(Quest quest)
     {
@@ -30,14 +43,6 @@ public class LogbookQuestUI : MonoBehaviour
 
         tmpQuestName.text = quest.name;
         tmpQuestDescription.text = quest.requirements;
-
-
-        void Subscribe(Quest quest)
-        {
-            quest.OnStarted += TimerGuiStart;
-            quest.OnCompleted += TimerGuiFinish;
-            quest.OnUpdate += TimerGuiUpdate;
-        }
     }
 
     public void OpenQuestWindow()
@@ -57,10 +62,7 @@ public class LogbookQuestUI : MonoBehaviour
         batton.SetActive(false);
     }
 
-    private void TimerGuiUpdate()
-    {
-        timer.GetComponent<Slider>().value = quest.timeInWork;
-    }
+    private void TimerGuiUpdate() => timer.GetComponent<Slider>().value = quest.timeInWork;
 
     private void TimerGuiFinish()
     {
@@ -68,5 +70,8 @@ public class LogbookQuestUI : MonoBehaviour
         batton.SetActive(false);
         marker.gameObject.SetActive(true);
         marker.sprite = finishedFlag;
+
+        UnSubscribe(quest);
+        Debug.Log("Отписался от квеста " + quest.name);
     }
 }

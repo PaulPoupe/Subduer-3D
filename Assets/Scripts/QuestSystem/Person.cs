@@ -8,18 +8,18 @@ public class Person
 
     private Image image;
 
-    public string name;
-    public string surename;
-    public string gender;
-    public int age;
+    public string name { get; private set; }
+    public string surename { get; private set; }
+    public string gender { get; private set; }
+    public int age { get; private set; }
 
     public float fatigue { get; private set; } = 100.0f;
     public float health { get; private set; } = 100.0f;
-    public float comunicationSkill;
+    public float comunicationSkill { get; private set; }
 
-    public float mentalStability;
+    public float mentalStability { get; private set; }
 
-    public Job job;
+    public Job job { get; private set; }
 
     public Person()
     {

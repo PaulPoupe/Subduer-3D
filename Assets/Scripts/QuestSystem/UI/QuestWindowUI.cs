@@ -81,18 +81,14 @@ public class QuestWindowUI : MonoBehaviour
     {
         LogbookManager.busyStaff.AddRange(quest.workers);
         foreach (Person person in quest.workers)
-        {
             LogbookManager.freeStaff.Remove(person);
-        }
     }
 
     private void ReturnPersonCards()
     {
         LogbookManager.freeStaff.AddRange(quest.workers);
         foreach (Person person in quest.workers)
-        {
             LogbookManager.busyStaff.Remove(person);
-        }
     }
 
     private void DeletePerson(Person person)
@@ -132,7 +128,7 @@ public class QuestWindowUI : MonoBehaviour
 
     public void EceptQuest()
     {
-        // Запуск квеста
+        LogbookManager.OnStartQuest.Invoke(quest);
         CloseWindow();
     }
 }

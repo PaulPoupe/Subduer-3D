@@ -22,11 +22,13 @@ public class SimpleQuest : Quest
         OnCompleted.Invoke();
         stage = Stage.completed;
     }
+
     private float WorkForce()
     {
         float averageForce;
         float forceSum = 0.0f;
         int truePeopleCount = 0;
+
         foreach (var people in workers)
         {
             if (people != null)
@@ -35,11 +37,13 @@ public class SimpleQuest : Quest
                 truePeopleCount++;
             }
         }
+
         if (truePeopleCount != 0)
         {
             averageForce = forceSum / truePeopleCount;
             return averageForce;
         }
+
         else
         {
             throw new NotImplementedException("Не назначены люди");
