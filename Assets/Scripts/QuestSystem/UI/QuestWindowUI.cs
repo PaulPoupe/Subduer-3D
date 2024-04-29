@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -17,23 +18,18 @@ public class QuestWindowUI : MonoBehaviour
     [SerializeField]
     private Transform staffSlotsPanel;
 
-    private LogbookManager manager;
     private Quest quest;
-
-    List<GameObject> staffSlots = new List<GameObject>();
-    GameObject[] questSlots;
-
 
     public void Inittialize(Quest quest)
     {
+        this.quest = quest;
+        Subscribe(quest);
+
         tmpName.text = quest.name;
         tmpDescription.text = quest.describtion;
-        this.quest = quest;
-        manager = GameObject.Find("QuestManager").GetComponent<LogbookManager>(); // Не использовать Find
-        questSlots = CreatePersonSlots(quest.peopleCount, personSlotsPanel, true);
-        CreateStaffSlots(manager.staffList, staffSlotsPanel);
 
-        Subscribe(quest);
+        CreatePersonSlots(quest.peopleCount, personSlotsPanel, true);
+        CreateStaffSlots(LogbookManager.freeStaff, staffSlotsPanel);
 
         void Subscribe(Quest quest)
         {
@@ -83,19 +79,19 @@ public class QuestWindowUI : MonoBehaviour
 
     private void RemovePersonCards()
     {
-        manager.busyStaffList.AddRange(quest.workers);
+        LogbookManager.busyStaff.AddRange(quest.workers);
         foreach (Person person in quest.workers)
         {
-            manager.staffList.Remove(person);
+            LogbookManager.freeStaff.Remove(person);
         }
     }
 
     private void ReturnPersonCards()
     {
-        manager.staffList.AddRange(quest.workers);
+        LogbookManager.freeStaff.AddRange(quest.workers);
         foreach (Person person in quest.workers)
         {
-            manager.busyStaffList.Remove(person);
+            LogbookManager.busyStaff.Remove(person);
         }
     }
 
@@ -136,7 +132,7 @@ public class QuestWindowUI : MonoBehaviour
 
     public void EceptQuest()
     {
-        manager.StartQuest(quest);
+        // Запуск квеста
         CloseWindow();
     }
 }

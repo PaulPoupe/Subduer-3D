@@ -34,14 +34,13 @@ public abstract class Quest : ScriptableObject
 
     public abstract IEnumerator StartQuest();
 
-    public abstract event Action OnCompleted;
-    public abstract event Action OnUpdate;
     public abstract event Action OnStarted;
+    public abstract event Action OnUpdate;
+    public abstract event Action OnCompleted;
+
 
     public void Inittialize()
     {
         workers = new Person[peopleCount];
     }
-
-
 }

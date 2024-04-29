@@ -1,62 +1,51 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class LogbookManager : MonoBehaviour
 {
-    private List<GameObject> questPanels = new List<GameObject>();
-    private List<Quest> quests = new List<Quest>();
-    public List<Quest> questList = new List<Quest>();
-    public List<Person> staffList = new List<Person>();
-    public List<Person> busyStaffList = new List<Person>();
-
     [SerializeField]
-    private GameObject prefab;
-    [SerializeField]
-    private Transform logbookQuestPanel;
+    private List<Quest> questList = new List<Quest>();
+    private List<Quest> uploadedQuests = new List<Quest>();
 
     private const int staffCount = 10;
+    public static List<Person> freeStaff = new List<Person>();
+    public static List<Person> busyStaff = new List<Person>();
+
+    public static event Action<Quest> OnAddQuest;
 
 
-    private void Awake()
-    {
-        CreateNewStaff();
-    }
+
+    private void Awake() => CreateNewStaff();
 
     private void CreateNewStaff()
     {
         for (int i = 0; i < staffCount; i++)
         {
-            staffList.Add(new Person());
+            freeStaff.Add(new Person());
         }
     }
 
     private void AddQuest(Quest quest)
     {
-        if (!quests.Any(q => q.id == quest.id))
+        if (!uploadedQuests.Any(q => q.id == quest.id))
         {
             ResetQuest(quest);
-            quests.Add(quest);
-            questPanels.Add(Instantiate(prefab, logbookQuestPanel));
-            quest.Inittialize();
-            questPanels[questPanels.Count - 1].GetComponent<LogbookUI>().Inittialize(quest);
-            questList.Remove(quest);
-        }
-    }
-    public void StartQuest(Quest quest)
-    {
-        StartCoroutine(quest.StartQuest());
-    }
 
-    // В дальнейшем поидее оно должно не сбрасываться а загружаться из сохранения
-    private void ResetQuest(Quest quest)
-    {
-        quest.stage = Stage.notStarted;
-        quest.timeInWork = 0;
+            uploadedQuests.Add(quest);
+            quest.Inittialize();
+            OnAddQuest.Invoke(quest);
+            questList.Remove(quest);
+
+            void ResetQuest(Quest quest)
+            {
+                quest.stage = Stage.notStarted;
+                quest.timeInWork = 0;
+            }
+        }
     }
 
     public void InstantiateRandomQuest()

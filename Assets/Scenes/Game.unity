@@ -753,10 +753,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 792340071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400, y: -482.5}
+  m_SizeDelta: {x: 800, y: 835}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &733194179
 MonoBehaviour:
@@ -855,13 +855,14 @@ GameObject:
   - component: {fileID: 792340074}
   - component: {fileID: 792340073}
   - component: {fileID: 792340072}
+  - component: {fileID: 792340076}
   m_Layer: 5
   m_Name: Logbook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &792340071
 RectTransform:
   m_ObjectHideFlags: 0
@@ -960,6 +961,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792340070}
   m_CullTransparentMesh: 1
+--- !u!114 &792340076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792340070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c10a2ca690add4a9dc70b98b074bc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestPanelPrefab: {fileID: 9149799486743462500, guid: 6eeb29a3968655d49891dc588e99384d, type: 3}
+  questPanel: {fileID: 733194178}
 --- !u!1 &861230803
 GameObject:
   m_ObjectHideFlags: 0
@@ -1155,10 +1170,10 @@ RectTransform:
   - {fileID: 722782707}
   m_Father: {fileID: 792340071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 400, y: -27.5}
+  m_SizeDelta: {x: 800, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1067528216
 MonoBehaviour:
@@ -1461,8 +1476,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: edf09e8f3075dd74798fdcfde4592174, type: 2}
   - {fileID: 11400000, guid: 6f0ef5545c362c847bec4cfb8754620a, type: 2}
   - {fileID: 11400000, guid: fc7efc4153305374ca7b045c61558b5a, type: 2}
-  prefab: {fileID: 9149799486743462500, guid: 6eeb29a3968655d49891dc588e99384d, type: 3}
-  logbookQuestPanel: {fileID: 733194178}
 --- !u!4 &1886602468
 Transform:
   m_ObjectHideFlags: 0
