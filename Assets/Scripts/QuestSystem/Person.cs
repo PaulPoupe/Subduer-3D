@@ -1,7 +1,6 @@
 using System;
 using UnityEngine.UI;
 
-
 public class Person
 {
     public int? position = null;
@@ -29,8 +28,9 @@ public class Person
         age = random.Next(18, 48);
         comunicationSkill = random.Next(0, 5);
         mentalStability = random.Next(0, 5);
-        job.profession = (Job.Profession)random.Next(0, 6);
-        job.skill = random.Next(0, 4);
+        job.profession = (Profession)random.Next(0, 6);
+        job.skill = random.Next(0, 10);
+        job.skillfulness = random.Next(0, 3);
         name = Names.mensNames[random.Next(Names.mensNames.Count)];
         surename = Names.sureNames[random.Next(Names.sureNames.Count)];
     }

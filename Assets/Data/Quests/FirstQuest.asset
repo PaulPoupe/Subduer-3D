@@ -22,4 +22,5 @@ MonoBehaviour:
     \u0447\u0442\u043E \u0431 \u0435\u0433\u043E \u043F\u043E\u0447\u0438\u043D\u0438\u0442\u044C"
   <peopleCount>k__BackingField: 2
   <timeNeed>k__BackingField: 60
-  timeInWork: 60.00213
+  profession: 0
+  timeInWork: 60.002037

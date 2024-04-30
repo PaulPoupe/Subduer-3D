@@ -11,42 +11,18 @@ public class SimpleQuest : Quest
 
     public override IEnumerator StartQuest()
     {
+        float workForce = WorkForce();
+
         OnStarted.Invoke();
         stage = Stage.performed;
+
         while (timeInWork < timeNeed)
         {
-            timeInWork += Time.deltaTime * WorkForce();
+            timeInWork += Time.deltaTime * workForce;
             OnUpdate.Invoke();
             yield return null;
         }
         OnCompleted.Invoke();
         stage = Stage.completed;
-    }
-
-    private float WorkForce()
-    {
-        float averageForce;
-        float forceSum = 0.0f;
-        int truePeopleCount = 0;
-
-        foreach (var people in workers)
-        {
-            if (people != null)
-            {
-                forceSum += people.job.skill;
-                truePeopleCount++;
-            }
-        }
-
-        if (truePeopleCount != 0)
-        {
-            averageForce = forceSum / truePeopleCount;
-            return averageForce;
-        }
-
-        else
-        {
-            throw new NotImplementedException("Не назначены люди");
-        }
     }
 }
