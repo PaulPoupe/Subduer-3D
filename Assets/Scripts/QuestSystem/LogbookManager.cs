@@ -3,65 +3,68 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class LogbookManager : MonoBehaviour
+namespace QuestSystem
 {
-    [SerializeField]
-    private List<Quest> questList = new List<Quest>();
-    private List<Quest> uploadedQuests = new List<Quest>();
-
-    private const int staffCount = 10;
-    public static List<Person> freeStaff = new List<Person>();
-    public static List<Person> busyStaff = new List<Person>();
-
-    public static event Action<Quest> OnAddQuest;
-    public static Action<Quest> OnStartQuest;
-
-    private void Awake()
+    public class LogbookManager : MonoBehaviour
     {
-        OnStartQuest += StartQuest;
-        CreateNewStaff();
-    }
+        [SerializeField]
+        private List<Quest> questList = new List<Quest>();
+        private List<Quest> uploadedQuests = new List<Quest>();
 
-    private void CreateNewStaff()
-    {
-        for (int i = 0; i < staffCount; i++)
-            freeStaff.Add(new Person());
-    }
+        private const int staffCount = 10;
+        public static List<Person> freeStaff = new List<Person>();
+        public static List<Person> busyStaff = new List<Person>();
 
-    private void AddQuest(Quest quest)
-    {
-        if (!uploadedQuests.Any(q => q.id == quest.id))
+        public static event Action<Quest> OnAddQuest;
+        public static Action<Quest> OnStartQuest;
+
+        private void Awake()
         {
-            ResetQuest(quest);
+            OnStartQuest += StartQuest;
+            CreateNewStaff();
+        }
 
-            uploadedQuests.Add(quest);
-            quest.Inittialize();
-            OnAddQuest.Invoke(quest);
-            questList.Remove(quest);
+        private void CreateNewStaff()
+        {
+            for (int i = 0; i < staffCount; i++)
+                freeStaff.Add(new Person());
+        }
 
-            void ResetQuest(Quest quest)
+        private void AddQuest(Quest quest)
+        {
+            if (!uploadedQuests.Any(q => q.id == quest.id))
             {
-                quest.stage = Stage.notStarted;
-                quest.timeInWork = 0;
+                ResetQuest(quest);
+
+                uploadedQuests.Add(quest);
+                quest.Inittialize();
+                OnAddQuest.Invoke(quest);
+                questList.Remove(quest);
+
+                void ResetQuest(Quest quest)
+                {
+                    quest.stage = Stage.notStarted;
+                    quest.timeInWork = 0;
+                }
             }
         }
-    }
 
-    public void InstantiateRandomQuest()
-    {
-        try
+        public void InstantiateRandomQuest()
         {
-            System.Random random = new System.Random();
-            AddQuest(questList[random.Next(questList.Count)]);
+            try
+            {
+                System.Random random = new System.Random();
+                AddQuest(questList[random.Next(questList.Count)]);
+            }
+            catch
+            {
+                Debug.LogWarning("Нет новых квестов");
+            }
         }
-        catch
-        {
-            Debug.LogWarning("Нет новых квестов");
-        }
-    }
 
-    private void StartQuest(Quest quest)
-    {
-        StartCoroutine(quest.StartQuest());
+        private void StartQuest(Quest quest)
+        {
+            StartCoroutine(quest.StartQuest());
+        }
     }
 }

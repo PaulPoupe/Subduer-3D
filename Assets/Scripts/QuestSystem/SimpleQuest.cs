@@ -2,27 +2,30 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-[CreateAssetMenu(fileName = "Simple Quest", menuName = "Quests")]
-public class SimpleQuest : Quest
+namespace QuestSystem
 {
-    public override event Action OnStarted;
-    public override event Action OnUpdate;
-    public override event Action OnCompleted;
-
-    public override IEnumerator StartQuest()
+    [CreateAssetMenu(fileName = "Simple Quest", menuName = "Quests")]
+    public class SimpleQuest : Quest
     {
-        float workForce = WorkForce();
+        public override event Action OnStarted;
+        public override event Action OnUpdate;
+        public override event Action OnCompleted;
 
-        OnStarted.Invoke();
-        stage = Stage.performed;
-
-        while (timeInWork < timeNeed)
+        public override IEnumerator StartQuest()
         {
-            timeInWork += Time.deltaTime * workForce;
-            OnUpdate.Invoke();
-            yield return null;
+            float workForce = WorkForce();
+
+            OnStarted.Invoke();
+            stage = Stage.performed;
+
+            while (timeInWork < timeNeed)
+            {
+                timeInWork += Time.deltaTime * workForce;
+                OnUpdate.Invoke();
+                yield return null;
+            }
+            OnCompleted.Invoke();
+            stage = Stage.completed;
         }
-        OnCompleted.Invoke();
-        stage = Stage.completed;
     }
 }

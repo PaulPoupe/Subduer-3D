@@ -2,24 +2,27 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PersonSlot : MonoBehaviour, IDropHandler
+namespace QuestSystem
 {
-    public int? index;
-    public Person pastPerson;
-    public event Action<GameObject, int> OnPastPerson;
-
-    public void OnDrop(PointerEventData eventData)
+    public class PersonSlot : MonoBehaviour, IDropHandler
     {
-        if (transform.childCount == 0 && eventData.pointerDrag.GetComponent<CardMoving>() != null)
+        public int? index;
+        public Person pastPerson;
+        public event Action<GameObject, int> OnPastPerson;
+
+        public void OnDrop(PointerEventData eventData)
         {
-            GameObject dropped = eventData.pointerDrag;
-            CardMoving cardMoving = dropped.GetComponent<CardMoving>();
-            cardMoving.parentAfterDrag = transform;
+            if (transform.childCount == 0 && eventData.pointerDrag.GetComponent<CardMoving>() != null)
+            {
+                GameObject dropped = eventData.pointerDrag;
+                CardMoving cardMoving = dropped.GetComponent<CardMoving>();
+                cardMoving.parentAfterDrag = transform;
 
-            if (index != null)
-                OnPastPerson.Invoke(dropped, (int)index);
+                if (index != null)
+                    OnPastPerson.Invoke(dropped, (int)index);
 
+            }
         }
-    }
 
+    }
 }
