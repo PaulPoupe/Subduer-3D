@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 1223683752349222300}
   - component: {fileID: 2819303792893740784}
   m_Layer: 5
-  m_Name: Open quest
+  m_Name: Open quest button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -555,7 +555,7 @@ GameObject:
   - component: {fileID: 8355234009301149099}
   - component: {fileID: 5796293376665632834}
   m_Layer: 5
-  m_Name: description
+  m_Name: Requirements
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: sojdfhsdfhsdjfhsodfhsdjofsudfhsdufhsdufjhsduofsudfsudfjhsdufhjsdfjsdofjsdfhsdojfhjksdolfhsdfsjlkdfsdfjsdokjfiosjfioejfiosdjfsdoifjsoifjsoifjdsodhfoshdfosuhdfodsijfosiudhfhsoiudfjsoiudfhsdoiuhfsouihfufhoifiuhfosjhdfoi
+  m_text: Requirements
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -764,7 +764,7 @@ GameObject:
   - component: {fileID: 6022306732287624482}
   - component: {fileID: 2583820556478696195}
   m_Layer: 5
-  m_Name: name
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
