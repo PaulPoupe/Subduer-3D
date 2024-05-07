@@ -26,15 +26,13 @@ namespace QuestSystem
         {
             Random random = new Random();
 
-            job = new Job();
+            name = PersonsData.maleNames[random.Next(PersonsData.maleNames.Count)];
+            surename = PersonsData.surenames[random.Next(PersonsData.surenames.Count)];
             age = random.Next(18, 48);
+            job = new Job();
             comunicationSkill = random.Next(0, 5);
             mentalStability = random.Next(0, 5);
-            job.profession = (Profession)random.Next(0, 6);
-            job.skill = random.Next(0, 10);
-            job.skillfulness = random.Next(0, 3);
-            name = Names.mensNames[random.Next(Names.mensNames.Count)];
-            surename = Names.sureNames[random.Next(Names.sureNames.Count)];
+
         }
     }
 }
