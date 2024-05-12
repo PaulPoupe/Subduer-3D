@@ -4,7 +4,7 @@ using System;
 
 namespace QuestSystem
 {
-    [CreateAssetMenu(fileName = "Simple Quest", menuName = "Quests")]
+    [CreateAssetMenu(fileName = "Simple Quest", menuName = "Quests/Simple Quest")]
     public class SimpleQuest : Quest
     {
         public override event Action OnStarted;
