@@ -15,7 +15,7 @@ namespace QuestSystem
 
         private void Awake()
         {
-            LogbookManager.OnAddQuest += AddQuest;
+            Logbook.OnAddQuest += AddQuest;
         }
 
         public void AddQuest(Quest quest)

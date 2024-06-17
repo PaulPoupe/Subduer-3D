@@ -43,7 +43,6 @@ namespace QuestSystem
             Subscribe(quest);
 
             tmpQuestName.text = quest.name;
-            tmpQuestDescription.text = quest.requirements;
         }
 
         public void OpenQuestWindow()
@@ -59,11 +58,11 @@ namespace QuestSystem
         private void TimerGuiStart()
         {
             timer.SetActive(true);
-            timer.GetComponent<Slider>().maxValue = quest.timeNeed;
+            timer.GetComponent<Slider>().maxValue = quest.time;
             batton.SetActive(false);
         }
 
-        private void TimerGuiUpdate() => timer.GetComponent<Slider>().value = quest.timeInWork;
+        private void TimerGuiUpdate() => timer.GetComponent<Slider>().value = quest.currentTime;
 
         private void TimerGuiFinish()
         {

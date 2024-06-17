@@ -18,12 +18,11 @@ namespace QuestSystem
         public float skill;
         public float skillfulness;
 
-        public Job()
+        public Job(PersonSample sample)
         {
-            System.Random random = new System.Random();
-            profession = (Profession)random.Next(0, 6);
-            skill = random.Next(0, 10);
-            skillfulness = random.Next(0, 3);
+            profession = sample.profession;
+            skill = sample.skill;
+            skillfulness = sample.skillfulness;
         }
     }
 }

@@ -27,10 +27,10 @@ namespace QuestSystem
             Subscribe(quest);
 
             tmpName.text = quest.name;
-            tmpDescription.text = quest.describtion;
+            tmpDescription.text = quest.description;
 
-            CreatePersonSlots(quest.peopleCount, personSlotsPanel, true);
-            CreateStaffSlots(LogbookManager.freeStaff, staffSlotsPanel);
+            CreatePersonSlots(quest.workers.Length, personSlotsPanel, true);
+            CreateStaffSlots(Staff.GetFreeStaff(), staffSlotsPanel);
 
             void Subscribe(Quest quest)
             {
@@ -55,7 +55,7 @@ namespace QuestSystem
             return slots;
         }
 
-        private GameObject[] CreateStaffSlots(List<Person> persons, Transform parent)
+        private GameObject[] CreateStaffSlots(IReadOnlyList<Person> persons, Transform parent)
         {
             GameObject[] slots = CreatePersonSlots(persons.Count, parent, false);
 
@@ -80,16 +80,14 @@ namespace QuestSystem
 
         private void RemovePersonCards()
         {
-            LogbookManager.busyStaff.AddRange(quest.workers);
             foreach (Person person in quest.workers)
-                LogbookManager.freeStaff.Remove(person);
+                Staff.AddToBusy(person);
         }
 
         private void ReturnPersonCards()
         {
-            LogbookManager.freeStaff.AddRange(quest.workers);
             foreach (Person person in quest.workers)
-                LogbookManager.busyStaff.Remove(person);
+                Staff.AddToFree(person);
         }
 
         private void DeletePerson(Person person)
@@ -129,7 +127,7 @@ namespace QuestSystem
 
         public void EceptQuest()
         {
-            LogbookManager.OnStartQuest.Invoke(quest);
+            Logbook.OnStartQuest.Invoke(quest);
             CloseWindow();
         }
     }
