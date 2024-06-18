@@ -23,8 +23,8 @@ namespace QuestSystem
             uploadedQuests.Add(quest);
         }
 
-        public List<Quest> GetNotUploaded() => notUploadedQuests;
-        public List<Quest> GetUploaded() => uploadedQuests;
+        public IReadOnlyList<Quest> GetNotUploaded() => notUploadedQuests;
+        public IReadOnlyList<Quest> GetUploaded() => uploadedQuests;
 
         private void CreateQuests()
         {
