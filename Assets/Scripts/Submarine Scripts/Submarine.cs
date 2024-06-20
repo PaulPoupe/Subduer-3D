@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Submarine : MonoBehaviour
 {
-    private float[] boatHp = new float[4] { 100.0f, 100.0f, 100.0f, 100.0f };
+    public LimitedBox<Resource> oxigen;
+    public LimitedBox<Resource> fuel;
+    public LimitedBox<Resource> charge;
+    public LimitedBox<Resource> purifiedWater;
 
-    private float fuel;
-    private float bataryCharge;
-    private float oxigen;
 }
