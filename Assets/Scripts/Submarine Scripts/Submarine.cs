@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Submarine : MonoBehaviour
 {
-    public LimitedBox<Resource> oxigen;
-    public LimitedBox<Resource> fuel;
-    public LimitedBox<Resource> charge;
-    public LimitedBox<Resource> purifiedWater;
+    const int foodStorageMaxCapicity = 1000;
+
+
+
+    public LimitedBox<Resource> oxigen = new LimitedBox<Resource>();
+    public LimitedBox<Resource> fuel = new LimitedBox<Resource>();
+    public LimitedBox<Resource> charge = new LimitedBox<Resource>();
+    public LimitedBox<Resource> purifiedWater = new LimitedBox<Resource>();
+    public foodStorage foodStorage = new foodStorage(foodStorageMaxCapicity);
 
 }

@@ -16,6 +16,6 @@ MonoBehaviour:
   id: 0
   name: FirstQuest
   description: HELL
-  time: 113
+  time: 119
   workersCount: 3
   profession: 00000000

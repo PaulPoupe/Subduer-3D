@@ -3,28 +3,44 @@ using System.Collections.Generic;
 public class foodStorage
 {
 
-    private List<Box<Eat>> eat;
+    private List<Box<Eat>> foodShelf;
 
     private int maxCapicity;
 
     public foodStorage(int maxCapicity)
     {
         this.maxCapicity = maxCapicity;
+        foodShelf = new List<Box<Eat>>(maxCapicity);
     }
 
-    private bool CapacityCount()
+
+
+    public IReadOnlyList<Box<Eat>> GetEat() => foodShelf;
+
+    public void AddFood(Box<Eat> foodBox)
     {
-        int capacity = 0;
-        foreach (Box<Eat> box in eat)
+        if (CapacityCount())
         {
-            capacity += box.resource.size * box.count;
+            foreach (Box<Eat> box in foodShelf)
+            {
+                if (box.Add(foodBox))
+                    return;
+            }
+            foodShelf.Add(foodBox);
         }
-        return capacity <= maxCapicity;
+
+        bool CapacityCount()
+        {
+            int capacity = 0;
+            foreach (Box<Eat> box in foodShelf)
+            {
+                capacity += box.resource.size * box.count;
+            }
+            capacity += foodBox.resource.size * foodBox.count;
+
+            return capacity <= maxCapicity;
+        }
     }
 
-    public IReadOnlyList<Box<Eat>> GetEat() => eat;
-
-
-    //Остановился методы присвоения 
 
 }

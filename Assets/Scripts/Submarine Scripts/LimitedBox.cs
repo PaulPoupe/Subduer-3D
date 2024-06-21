@@ -1,15 +1,21 @@
+using System;
+
 public class LimitedBox<T> : Box<T> where T : AnyResource
 {
-    public LimitedBox(int maxCount, int count) : base(count)
+    public LimitedBox(int count, int maxCount, T resource) : base(count, resource)
     {
         this.maxCount = maxCount;
     }
+    public LimitedBox() : base() { }
 
     public int maxCount { get; private set; }
 
-    public override void Add(Box<T> resourceBox)
+    public override bool Add(Box<T> resourceBox)
     {
         if (maxCount <= count + resourceBox.count)
-            base.Add(resourceBox);
+            return base.Add(resourceBox);
+        else
+            throw new ArgumentException("переполнение ящика");
+
     }
 }

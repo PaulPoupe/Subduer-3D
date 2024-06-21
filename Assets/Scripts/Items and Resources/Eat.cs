@@ -1,4 +1,8 @@
 public class Eat : AnyResource, IEat
 {
-    public int size { get; private set; }
+    public Eat(EatSample sample) : base(sample)
+    {
+        calorie = sample.calorie;
+    }
+    public int calorie { get; private set; }
 }
