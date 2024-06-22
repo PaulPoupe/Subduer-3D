@@ -2,7 +2,7 @@ using QuestSystem;
 
 public interface ICompartment
 {
-    Box<T> Work<T>() where T : AnyResource;
+    Box Work();
 
     Person ReturnPerson(Person person);
     void SendToWork(Person person);

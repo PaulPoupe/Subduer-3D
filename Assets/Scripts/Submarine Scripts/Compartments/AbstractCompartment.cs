@@ -23,5 +23,5 @@ public abstract class AbstractCompartment : MonoBehaviour, ICompartment
             workers.Add(person);
     }
 
-    public abstract Box<T> Work<T>() where T : AnyResource;
+    public abstract Box Work();
 }
