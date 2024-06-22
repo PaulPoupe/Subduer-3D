@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 
-public class Storage
+public class Storage<T> where T : Item
 {
 
-    private List<Box> shelf;
+    private List<Box<T>> shelf;
 
     private int maxCapicity;
 
@@ -13,36 +13,36 @@ public class Storage
         if (maxCapicity >= 0)
         {
             this.maxCapicity = maxCapicity;
-            shelf = new List<Box>(maxCapicity);
+            shelf = new List<Box<T>>(maxCapicity);
         }
         else throw new ArgumentOutOfRangeException();
     }
 
-    public IReadOnlyList<Box> Get() => shelf;
+    public IReadOnlyList<Box<T>> GetShelf() => shelf;
 
-    public void Add(Box AddebleBox)
+    public void Add(Box<T> AddebleBox)
     {
-        if (CapacityCount())
+        if (CapacityCount(AddebleBox))
         {
-            foreach (Box box in shelf)
+            foreach (Box<T> box in shelf)
             {
                 if (box.Add(AddebleBox))
                     return;
             }
             shelf.Add(AddebleBox);
         }
+    }
 
-        bool CapacityCount()
+    private bool CapacityCount(Box<T> AddebleBox)
+    {
+        int capacity = 0;
+        foreach (Box<T> box in shelf)
         {
-            int capacity = 0;
-            foreach (Box box in shelf)
-            {
-                capacity += box.Capicity();
-            }
-            capacity += AddebleBox.Capicity();
-
-            return capacity <= maxCapicity;
+            capacity += box.Capicity();
         }
+        capacity += AddebleBox.Capicity();
+
+        return capacity <= maxCapicity;
     }
 
 

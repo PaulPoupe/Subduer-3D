@@ -2,9 +2,9 @@
 using System;
 using UnityEngine;
 
-public class Box
+public class Box<T> where T : Item
 {
-    public Box(Item item, int count)
+    public Box(T item, int count)
     {
         if (count >= 0)
         {
@@ -14,17 +14,17 @@ public class Box
         else throw new ArgumentOutOfRangeException();
     }
 
-    public Box(Item item)
+    public Box(T item)
     {
         this.item = item;
     }
 
     public Box() { }
 
-    public Item item { get; private set; }
+    public T item { get; private set; }
     public int count { get; private set; }
 
-    public virtual bool Add(Box addebleBox)
+    public virtual bool Add(Box<T> addebleBox)
     {
         if (item != null)
         {
@@ -43,15 +43,15 @@ public class Box
         }
     }
 
-    public Box Take(int count)
+    public Box<T> Take(int count)
     {
         if (this.count >= count)
         {
             this.count -= count;
-            return new Box(item, count);
+            return new Box<T>(item, count);
         }
         Debug.Log("Не хватает ресурса" + item.name);
-        return new Box(item);
+        return new Box<T>(item);
     }
 
     public int Capicity() => count * item.size;

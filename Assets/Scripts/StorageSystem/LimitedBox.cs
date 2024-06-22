@@ -1,13 +1,13 @@
 using System;
 
-public class LimitedBox : Box
+public class LimitedBox<T> : Box<T> where T : Item
 {
-    public LimitedBox(int maxCapicity, Item item, int count) : base(item, count)
+    public LimitedBox(int maxCapicity, T item, int count) : base(item, count)
     {
         this.maxCapicity = maxCapicity;
     }
 
-    public LimitedBox(int maxCapicity, Item item) : base(item)
+    public LimitedBox(int maxCapicity, T item) : base(item)
     {
         this.maxCapicity = maxCapicity;
     }
@@ -19,12 +19,12 @@ public class LimitedBox : Box
 
     public int maxCapicity { get; private set; }
 
-    public override bool Add(Box addebleBox)
+    public override bool Add(Box<T> addebleBox)
     {
         if (maxCapicity <= Capicity() + addebleBox.Capicity())
             return base.Add(addebleBox);
         else
-            return base.Add(new Box(item, MaxItemCount() - count));
+            return base.Add(new Box<T>(item, MaxItemCount() - count));
     }
 
 
