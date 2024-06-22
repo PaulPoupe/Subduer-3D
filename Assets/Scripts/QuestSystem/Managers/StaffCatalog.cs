@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace QuestSystem
 {
-    public class Staff : MonoBehaviour
+    public class StaffCatalog : MonoBehaviour
     {
         [SerializeField]
         private PersonSample[] personSamples;

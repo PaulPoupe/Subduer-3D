@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace QuestSystem
 {
-    public class QuestManager : MonoBehaviour
+    public class QuestCatalog : MonoBehaviour
     {
         [SerializeField]
         private QuestSample[] samples;

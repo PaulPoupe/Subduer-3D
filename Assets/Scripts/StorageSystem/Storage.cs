@@ -45,5 +45,4 @@ public class Storage<T> where T : Item
         return capacity <= maxCapicity;
     }
 
-
 }

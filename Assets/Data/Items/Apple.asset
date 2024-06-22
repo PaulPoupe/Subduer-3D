@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2387f68100aed4489ba3e83340a7c5, type: 3}
+  m_Name: Apple
+  m_EditorClassIdentifier: 
+  <iconImage>k__BackingField: {fileID: 2092610552, guid: 19e69f696ddb59348bb11470c15d67ef, type: 3}
+  <name>k__BackingField: Apple
+  <description>k__BackingField: This is not name of company
+  <size>k__BackingField: 1
+  <calorie>k__BackingField: 47

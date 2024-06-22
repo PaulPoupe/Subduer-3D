@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public abstract class Item : ScriptableObject
 {
     [field: SerializeField]
-    public Image iconImage { get; private set; }
+    public Sprite iconImage { get; private set; }
     [field: SerializeField]
     public new string name { get; private set; }
     [field: SerializeField, TextArea]

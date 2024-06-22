@@ -30,7 +30,7 @@ namespace QuestSystem
             tmpDescription.text = quest.description;
 
             CreatePersonSlots(quest.workers.Length, personSlotsPanel, true);
-            CreateStaffSlots(Staff.GetFreeStaff(), staffSlotsPanel);
+            CreateStaffSlots(StaffCatalog.GetFreeStaff(), staffSlotsPanel);
 
             void Subscribe(Quest quest)
             {
@@ -81,13 +81,13 @@ namespace QuestSystem
         private void RemovePersonCards()
         {
             foreach (Person person in quest.workers)
-                Staff.AddToBusy(person);
+                StaffCatalog.AddToBusy(person);
         }
 
         private void ReturnPersonCards()
         {
             foreach (Person person in quest.workers)
-                Staff.AddToFree(person);
+                StaffCatalog.AddToFree(person);
         }
 
         private void DeletePerson(Person person)

@@ -14,11 +14,6 @@ public class Box<T> where T : Item
         else throw new ArgumentOutOfRangeException();
     }
 
-    public Box(T item)
-    {
-        this.item = item;
-    }
-
     public Box() { }
 
     public T item { get; private set; }
@@ -45,13 +40,35 @@ public class Box<T> where T : Item
 
     public Box<T> Take(int count)
     {
-        if (this.count >= count)
+        Box<T> box;
+
+        if (count < 0)
+            throw new ArgumentOutOfRangeException();
+
+        if (this.count > count)
         {
+            box = new Box<T>(item, count);
+
             this.count -= count;
-            return new Box<T>(item, count);
+            return box;
         }
+
+        else if (this.count == count)
+        {
+            box = new Box<T>(item, count);
+
+            Clear();
+            return box;
+        }
+
         Debug.Log("Не хватает ресурса" + item.name);
-        return new Box<T>(item);
+        return null;
+    }
+
+    public void Clear()
+    {
+        item = null;
+        count = 0;
     }
 
     public int Capicity() => count * item.size;

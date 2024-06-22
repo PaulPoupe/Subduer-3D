@@ -16,6 +16,6 @@ MonoBehaviour:
   id: 1
   name: SecondQuest
   description: End
-  time: 324
+  time: 19
   workersCount: 2
   profession: 0200000001000000

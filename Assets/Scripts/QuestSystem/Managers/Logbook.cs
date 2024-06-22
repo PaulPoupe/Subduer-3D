@@ -8,7 +8,7 @@ namespace QuestSystem
     public class Logbook : MonoBehaviour
     {
         [SerializeField]
-        private QuestManager questManager;
+        private QuestCatalog questManager;
 
         public static event Action<Quest> OnAddQuest;
         public static Action<Quest> OnStartQuest;
