@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Submarine : MonoBehaviour
 {
+    [SerializeField]
+    private int foodStorageMaxCapicity;
 
+    public FoodStorage foodStorage;
 }

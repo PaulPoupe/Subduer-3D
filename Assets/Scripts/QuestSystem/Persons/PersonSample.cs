@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace QuestSystem
 {
-    [CreateAssetMenu(fileName = "PersonSample", menuName = "PersonSample")]
+    [CreateAssetMenu(fileName = "Person", menuName = "Person")]
     public class PersonSample : ScriptableObject
     {
         public Image image;

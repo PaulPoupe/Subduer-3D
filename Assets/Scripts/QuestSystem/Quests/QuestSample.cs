@@ -10,7 +10,7 @@ namespace QuestSystem
         Hard,
     }
 
-    [CreateAssetMenu(fileName = "QuestSample", menuName = "QuestSample")]
+    [CreateAssetMenu(fileName = "Simple quest", menuName = "Quests/Simple quest")]
     public class QuestSample : ScriptableObject
     {
         public Type type;

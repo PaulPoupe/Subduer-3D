@@ -24,7 +24,7 @@ public class Storage<T> where T : Item
     {
         if (CapacityCount(AddebleBox))
         {
-            foreach (Box<T> box in shelf)
+            foreach (var box in shelf)
             {
                 if (box.Add(AddebleBox))
                     return;
@@ -36,7 +36,7 @@ public class Storage<T> where T : Item
     private bool CapacityCount(Box<T> AddebleBox)
     {
         int capacity = 0;
-        foreach (Box<T> box in shelf)
+        foreach (var box in shelf)
         {
             capacity += box.Capicity();
         }
