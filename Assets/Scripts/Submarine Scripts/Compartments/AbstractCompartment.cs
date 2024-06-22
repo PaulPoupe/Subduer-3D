@@ -23,5 +23,5 @@ public abstract class AbstractCompartment : MonoBehaviour, ICompartment
             workers.Add(person);
     }
 
-    public abstract Box Work();
+    public abstract Box<Item> Work();
 }
