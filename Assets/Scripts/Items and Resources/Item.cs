@@ -1,15 +1,13 @@
 using UnityEngine;
-using UnityEngine.UI;
-
 
 public abstract class Item : ScriptableObject
 {
     [field: SerializeField]
-    public Sprite iconImage { get; private set; }
+    public Sprite iconImage { get; protected set; }
     [field: SerializeField]
-    public new string name { get; private set; }
+    public new string name { get; protected set; }
     [field: SerializeField, TextArea]
-    public string description { get; private set; }
+    public string description { get; protected set; }
     [field: SerializeField]
-    public int size { get; private set; }
+    public int size { get; protected set; }
 }

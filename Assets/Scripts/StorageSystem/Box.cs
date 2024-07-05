@@ -1,4 +1,3 @@
-
 using System;
 using UnityEngine;
 
@@ -17,7 +16,7 @@ public class Box<T> where T : Item
     public Box() { }
 
     public T item { get; private set; }
-    public int count { get; private set; }
+    public int count { get; protected set; }
 
     public virtual bool Add(Box<T> addebleBox)
     {
@@ -65,7 +64,7 @@ public class Box<T> where T : Item
         return null;
     }
 
-    public void Clear()
+    public virtual void Clear()
     {
         item = null;
         count = 0;
